@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>哈夫曼树创建过程交互演示</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Data Structure Demo</p>
+        <h1>哈夫曼树创建过程交互演示</h1>
+      </div>
+      <a class="doc-link" href="report.pdf" target="_blank" rel="noopener">查看说明文档</a>
+    </header>
+
+    <main class="workspace">
+      <section class="control-panel" aria-labelledby="input-title">
+        <div class="panel-heading">
+          <h2 id="input-title">输入权值</h2>
+          <span class="hint">格式：字符:权值，用逗号或换行分隔</span>
+        </div>
+
+        <label class="input-label" for="dataInput">字符权值表</label>
+        <textarea id="dataInput" rows="6" spellcheck="false">A:5, B:9, C:12, D:13, E:16, F:45</textarea>
+        <p id="errorMessage" class="error" role="alert" aria-live="polite"></p>
+
+        <div class="button-row" aria-label="操作按钮">
+          <button id="sampleBtn" type="button">示例数据</button>
+          <button id="initBtn" type="button" class="primary">初始化</button>
+          <button id="nextBtn" type="button" disabled>下一步</button>
+          <button id="resetBtn" type="button">重置</button>
+        </div>
+
+        <div class="status-strip">
+          <div>
+            <span class="status-label">当前阶段</span>
+            <strong id="phaseText">等待初始化</strong>
+          </div>
+          <div>
+            <span class="status-label">步骤</span>
+            <strong><span id="stepIndex">0</span>/<span id="stepTotal">0</span></strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="queue-panel" aria-labelledby="queue-title">
+        <div class="panel-heading">
+          <h2 id="queue-title">优先队列</h2>
+          <span class="hint">每步取出权值最小的两个节点</span>
+        </div>
+        <div id="queueList" class="queue-list" aria-live="polite"></div>
+      </section>
+
+      <section class="visual-panel" aria-labelledby="tree-title">
+        <div class="panel-heading">
+          <h2 id="tree-title">树形构建动画</h2>
+          <span id="currentAction" class="action-text">点击“初始化”开始演示</span>
+        </div>
+        <div class="svg-wrap">
+          <svg id="treeSvg" role="img" aria-label="哈夫曼树构建过程"></svg>
+        </div>
+      </section>
+
+      <section class="explain-panel" aria-labelledby="explain-title">
+        <h2 id="explain-title">关键步骤说明</h2>
+        <ol id="stepLog" class="step-log" aria-live="polite"></ol>
+      </section>
+
+      <section class="codes-panel" aria-labelledby="codes-title">
+        <div class="panel-heading">
+          <h2 id="codes-title">哈夫曼编码表</h2>
+          <span class="hint">左边为 0，右边为 1</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>字符</th>
+                <th>权值</th>
+                <th>编码</th>
+              </tr>
+            </thead>
+            <tbody id="codesBody">
+              <tr>
+                <td colspan="3">构建完成后显示编码</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
