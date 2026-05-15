@@ -134,7 +134,7 @@ root = queue[0]
 
 \section{AI 工具使用说明}
 
-本项目使用 AI 辅助完成需求拆解、交互设计、代码生成、文档撰写和测试修正。AI 的作用不是替代算法理解，而是帮助把课程要求转化为可运行的网页和规范化说明文档。
+本项目使用 AI 辅助完成需求拆解、交互设计、代码生成、文档撰写和部署说明。AI 的作用不是替代算法理解，而是帮助把课程要求转化为可通过公网访问的网页和规范化说明文档。
 
 \subsection{工具介绍}
 
@@ -144,7 +144,7 @@ root = queue[0]
 \hline
 ChatGPT / Codex & 分析作业要求，制定实现计划，生成网页代码、JavaScript 算法逻辑、CSS 样式和 LaTeX 文档。 \\
 \hline
-终端命令 & 检查目录、运行 Node.js 校验算法、编译 LaTeX、启动本地静态服务器。 \\
+终端命令 & 检查目录、运行算法校验、编译 LaTeX、管理 Git 提交与推送。 \\
 \hline
 XeLaTeX & 将中文 LaTeX 源文件编译为 PDF。 \\
 \hline
@@ -199,7 +199,7 @@ AI 生成计划摘要：
 GitHub Pages 访问地址为 https://ccycyc6.github.io/ds_work/。
 \end{lstlisting}
 
-AI 输出目标：给出可执行的文件结构、功能范围、测试方式和部署方式。
+AI 输出目标：给出可执行的文件结构、功能范围和部署方式。
 
 \subsubsection*{第 4 轮：开始实施}
 
@@ -231,21 +231,21 @@ AI 完成动画时采用了分层拆解的方式：
   \item 最后补充输入校验、按钮状态、错误提示和响应式 CSS。
 \end{enumerate}
 
-\section{运行与部署}
+\section{公网访问与部署}
 
-\subsection{本地运行}
+\subsection{公网访问地址}
 
-在项目目录运行：
-
-\begin{lstlisting}
-python3 -m http.server 8000
-\end{lstlisting}
-
-然后在浏览器打开：
+本项目通过 GitHub Pages 提供公网访问。仓库启用 Pages 后，可直接打开：
 
 \begin{lstlisting}
-http://localhost:8000/
+https://ccycyc6.github.io/ds_work/
 \end{lstlisting}
+
+如果首次打开时显示 404，通常表示 GitHub Pages 尚未启用或部署还未完成，需要在仓库设置中完成 Pages 配置并等待生成。
+
+\subsection{说明文档}
+
+网页中提供了 PDF 文档入口，公网访问页面后可点击“查看说明文档”打开 \texttt{report.pdf}。文档也可通过仓库中的 \texttt{report.pdf} 文件查看。
 
 \subsection{编译 PDF}
 
@@ -275,20 +275,24 @@ git push -u origin main
 https://ccycyc6.github.io/ds_work/
 \end{lstlisting}
 
-\section{测试记录}
+\section{功能验收}
 
-测试用例包括：
+面向最终公网页面，项目应满足以下验收标准：
+
+\begin{lstlisting}
+https://ccycyc6.github.io/ds_work/
+\end{lstlisting}
 
 \begin{itemize}
-  \item 示例输入 \texttt{A:5, B:9, C:12, D:13, E:16, F:45} 可以完整构建出哈夫曼树。
-  \item 空输入会提示至少需要两个字符权值项。
-  \item 重复字符会提示字符重复。
-  \item 非数字、零或负权值会提示权值必须为正整数。
-  \item 相同权值按输入顺序稳定排序，保证演示结果可复现。
+  \item 可以输入字符权值表并初始化优先队列。
+  \item 可以通过“下一步”逐步观察取出最小节点、合并节点和重新入队的过程。
+  \item 树形区域能够同步显示节点、边和 0/1 路径标记。
+  \item 构建完成后能够生成哈夫曼编码表。
+  \item 页面中的“查看说明文档”可以打开 PDF 文档。
 \end{itemize}
 
 \section{总结}
 
-本项目将哈夫曼树的抽象构建过程转化为可观察、可交互的网页动画。通过逐步按钮，用户可以清楚看到优先队列如何变化、节点如何合并、树如何增长，以及最终编码如何产生。AI 工具主要用于辅助需求拆解、代码实现、文档组织和测试修正，最终形成了可部署、可演示、可提交的课程作业成果。
+本项目将哈夫曼树的抽象构建过程转化为可观察、可交互的公网网页动画。通过逐步按钮，用户可以清楚看到优先队列如何变化、节点如何合并、树如何增长，以及最终编码如何产生。AI 工具主要用于辅助需求拆解、代码实现、文档组织和部署说明，最终形成了可部署、可演示、可提交的课程作业成果。
 
 \end{document}
